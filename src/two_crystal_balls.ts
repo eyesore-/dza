@@ -30,5 +30,18 @@
 //  Good luck!
 
 export default function twoCrystalBalls(breaks: boolean[]): number {
+  const jmp = Math.floor(Math.sqrt(breaks.length));
+
+  let i = jmp;
+  for (; i < breaks.length; i += jmp) {
+    if (breaks[i]) {
+      break;
+    }
+  }
+
+  for (let j = i - jmp; j < i + jmp; ++j) {
+    if (breaks[j]) return j;
+  }
+
   return -1;
 }
